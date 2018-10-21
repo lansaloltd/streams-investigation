@@ -2,7 +2,7 @@ package com.lansalo.benchmarck
 
 import java.util.concurrent.TimeUnit
 
-import com.lansalo.{Scopes, Target}
+import com.lansalo.Target
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.results.format.ResultFormatType
 import org.openjdk.jmh.runner.Runner
@@ -23,65 +23,45 @@ object BenchmarkRunner_ThroughputBenchmark {
 @State(Scope.Benchmark)
 private class ThroughputBenchmark {
 
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Fork(value = 1)
+  def testOriginalExampleWithList(): Unit = Target.originalExampleWithList
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Fork(value = 1)
+  def testOriginalExampleWithStream(): Unit = Target.originalExampleWithStream
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Fork(value = 1)
+  def testExampleWithStream1(): Unit = Target.exampleWithStream1
+
   /*@Benchmark
+  @BenchmarkMode(Array(Mode.AverageTime))
+  @Fork(value = 1)
+  def testExampleWithList1(): Unit = Target.exampleWithList1*/
+
+  @Benchmark
   @BenchmarkMode(Array(Mode.Throughput))
   @Fork(value = 1)
-  def testOriginalExampleWithList(state: Scopes.BenchmarkState): Unit = Target.originalExampleWithList
+  def testExampleWithStream2(): Unit = Target.exampleWithStream2
 
   @Benchmark
   @BenchmarkMode(Array(Mode.Throughput))
   @Fork(value = 1)
-  def testOriginalExampleWithStream(state: Scopes.BenchmarkState): Unit = Target.originalExampleWithStream*/
+  def testExampleWithList2(): Unit = Target.exampleWithList2
 
   @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
+  @BenchmarkMode(Array(Mode.Throughput))
   @Fork(value = 1)
-  def testExampleWithStream1(state: Scopes.BenchmarkState): Unit = Target.exampleWithStream1(state.sampleString)
+  def testExampleWithStream3(): Unit = Target.exampleWithStream3
 
   @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
+  @BenchmarkMode(Array(Mode.Throughput))
   @Fork(value = 1)
-  def testExampleWithList1(state: Scopes.BenchmarkState): Unit = Target.exampleWithList1(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithStream2(state: Scopes.BenchmarkState): Unit = Target.exampleWithStream2(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithList2(state: Scopes.BenchmarkState): Unit = Target.exampleWithList2(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithStream3(state: Scopes.BenchmarkState): Unit = Target.exampleWithStream3(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithList3(state: Scopes.BenchmarkState): Unit = Target.exampleWithList3(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithStream4(state: Scopes.BenchmarkState): Unit = Target.exampleWithStream4(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithList4(state: Scopes.BenchmarkState): Unit = Target.exampleWithList4(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithStream5(state: Scopes.BenchmarkState): Unit = Target.exampleWithStream5(state.sampleString)
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 1)
-  def testExampleWithList5(state: Scopes.BenchmarkState): Unit = Target.exampleWithList5(state.sampleString)
-
+  def testExampleWithList3(): Unit = Target.exampleWithList3
 
 }
+
